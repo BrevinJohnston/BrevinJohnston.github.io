@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Misesweeper</title>
+        <link rel='stylesheet' href='style.css'>
+        <meta name='viewport' content='width=device-width, initial-scale=1'>
+        <script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
+        <script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <!--<script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>-->
+        <script src="main.js"></script>
+    </head>
+
+    <body>
+        <div id='mainWrapper'>
+            <header id='mainHeaderBlock'></header>
+            <!--
+                difficulty selector and flag count
+            -->
+            <div id='gameWrapper'>
+                <div id='menuBar'>
+                    <!-- Columns, rows, mines-->
+                    <div class='menuButton' data-gridSettings='10x8x10' data-difficulty="Easy"></div>
+                    <div class='menuButton' data-gridSettings='18x14x40' data-difficulty="Normal"></div>
+                    <div class='menuPadding'></div>
+                    <div id='flags'></div>
+                    <div id='time'>000</div>
+                    <!--<div class='menuPadding'></div>
+                    <div class='menuPadding'></div>
+                    <div class='menuPadding'></div>-->
+                </div>
+                <!--
+                    The grid for minesweeper
+                -->
+                <div id='gameBoard'>
+
+                </div>
+                <!--
+                    Used to display game over condition and
+                    replay button
+                -->
+                <div id='overlay'>
+
+                </div>
+            </div>
+        </div>
+        
+    </body>
+</html>

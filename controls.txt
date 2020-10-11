@@ -1,0 +1,5 @@
+click on tile to reveal tile
+click and hold for more than 1 second to mark/unmark tile
+the number in the tile tells you how many mines are adjacent to it
+number at the top is how many makrs you have left
+mark all mines and reveal all other tiles to win

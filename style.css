@@ -1,0 +1,75 @@
+body{
+    background: radial-gradient(circle,slategray,darkslategray );
+}
+
+/*#mainWrapper{
+    
+    background-color: skyblue;
+    padding: 10px;
+}*/
+.tile{
+    background-color: lightgray;
+    width: auto;
+    height: auto;
+    border: solid slategray;
+    cursor: pointer;
+    text-align: center;
+    /*line-height: 0%;*/
+}
+
+#gameWrapper{
+    margin: auto;
+    /*width: calc(90vh);
+    width: 75vw;
+    height: 80vh;
+    background-color:blue;
+    padding: 10px;*/
+}
+
+#menuBar{
+    display: grid;
+    margin: auto;
+    /* the ending 3 frs are used for padding purposes*/
+    grid-template-columns: .5fr .5fr .5fr 1fr 1fr .5fr .5fr .5fr;
+    grid-template-rows: 50px;
+    background-color:darkgray;
+    padding: 5px;
+    width: calc(90vh)
+}
+
+#menuBar > .menuButton{
+    background-color: gray;
+    text-align: center;
+    font-size: 25px;
+    padding: 10px;
+    border: solid darkgray;
+    cursor: pointer;
+}
+
+.menuButton:hover{
+    opacity: 70%;
+}
+
+#menuBar > div{
+    background-color: darkgray;
+    text-align: center;
+    font-size: 25px;
+    padding: 10px;
+}
+
+#gameBoard{
+    display: grid;
+    background-color:  rgb(87, 87, 87);
+    grid-template-columns: repeat(18, 1fr);
+    grid-template-rows: repeat(14, 1fr);
+    padding: 5px;
+    margin: auto;
+    width: calc(90vh);
+    /*height: calc(100vw);*/
+}
+
+#gameBoard > div::before{
+    content:"";
+    padding-bottom: 100%;
+    display: block;
+}
