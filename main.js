@@ -192,7 +192,8 @@ function tile_uncover(game, ind){
 function tile_mark(game, ind){
   const col = ind % game.getStatus().ncols;
   const row = Math.floor(ind/game.getStatus().ncols);
-  if(!game.getStatus().done){
+  //cant mark a tile if the game hasent started
+  if(!game.getStatus().done && game.getStatus().nuncovered !== 0){
     game.mark(row, col);
   }
 
