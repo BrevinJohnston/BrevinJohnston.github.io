@@ -192,11 +192,17 @@ function tile_uncover(game, ind){
 function tile_mark(game, ind){
   const col = ind % game.getStatus().ncols;
   const row = Math.floor(ind/game.getStatus().ncols);
-  //cant mark a tile if the game hasent started
-  if(!game.getStatus().done && game.getStatus().nuncovered !== 0){
+  //mark or unmark a tile only if game has started, the game is not over and user has not used all of their marks
+  if(!game.getStatus().done && game.getStatus().nuncovered !== 0 && (game.getStatus().nmines - game.getStatus().nmarked > 0)){
     game.mark(row, col);
   }
-
+  //call game.mark() to unmark a tile that has a mark if max marks have been placed
+  else if((game.getStatus().nmines - game.getStatus().nmarked === 0)){
+    const renderingArray = game.getRendering();
+    if(renderingArray[row][col] === "F"){
+      game.mark(row, col);
+    }
+  }
   $("#flags").html(`${game.getStatus().nmines - game.getStatus().nmarked}`);
   render(game);
 }
