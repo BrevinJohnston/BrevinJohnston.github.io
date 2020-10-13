@@ -1,5 +1,5 @@
 window.addEventListener('load', main)
-
+let intervalVar;
 "use strict";
 
 let MSGame = (function(){
@@ -265,6 +265,7 @@ function prepare_dom(game){
   $("h1").css("display", "none");
   $("#flags").html(`${game.getStatus().nmines}`);
   render(game);
+  
 }
 
 //TODO: this method is a special rendering method to be used only on a game over 
@@ -307,6 +308,8 @@ function check_game_over_condition(game){
   let done = game.getStatus().done;
 
   if(done){
+    clearInterval(intervalVar);
+    intervalVar = null;
     if(boom){
       reveal_mines(game);
     }
@@ -321,6 +324,10 @@ function render(game){
   $("#gameBoard").css("grid-template-columns", `repeat(${game.getStatus().ncols}, 1fr)`);
   $("#gameBoard").css("grid-template-rows", `repeat(${game.getStatus().nrows}, 1fr)`);
 
+  if(game.getStatus().nuncovered !== 0 && !intervalVar){
+    console.log("Started Interval");
+    intervalVar = setInterval(incrementSeconds, 1000);
+  }
   $("#gameBoard").children().each(function(){
     if(Number($(this).attr("data-tileInd")) >= game.getStatus().ncols * game.getStatus().nrows){
       $(this).css("display", "none");
@@ -350,6 +357,15 @@ function menu_button_cb(game, ncols, nrows, nmines){
   game.init(nrows, ncols, nmines);
   render(game);
   $("#flags").html(`${game.getStatus().nmines}`);
+  $("#time").html("0");
+  $("#time").attr("data-playTime", 0);
+}
+
+function incrementSeconds(){
+  let seconds = Number($("#time").attr("data-playTime")) + 1;
+  $("#time").attr("data-playTime", seconds);
+  $("#time").html(`${seconds}`);
+  console.log(seconds);
 }
 
 function main(){
