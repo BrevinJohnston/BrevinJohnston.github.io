@@ -359,6 +359,11 @@ function menu_button_cb(game, ncols, nrows, nmines){
   $("#flags").html(`${game.getStatus().nmines}`);
   $("#time").html("0");
   $("#time").attr("data-playTime", 0);
+  if(intervalVar){
+    clearInterval(intervalVar);
+    intervalVar = null;
+  }
+  
 }
 
 function incrementSeconds(){
