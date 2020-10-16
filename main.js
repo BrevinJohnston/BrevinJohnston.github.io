@@ -258,7 +258,6 @@ function prepare_dom(game){
       const tile = document.createElement("div");
       tile.className = "tile";
       tile.setAttribute("data-tileInd", i);
-      tile.setAttribute("data-timer", 0);
       gameBoard.appendChild(tile);
   }
   add_tile_listeners(game);
@@ -370,7 +369,6 @@ function incrementSeconds(){
   let seconds = Number($("#time").attr("data-playTime")) + 1;
   $("#time").attr("data-playTime", seconds);
   $("#time").html(`${seconds}`);
-  console.log(seconds);
 }
 
 function main(){
