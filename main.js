@@ -1,7 +1,9 @@
 window.addEventListener('load', main)
 let intervalVar;
 "use strict";
-
+/*
+Federal Pavol (October 10, 2020) Minesweeper Game Engine
+*/
 let MSGame = (function(){
 
   // private constants
@@ -250,7 +252,10 @@ function add_tile_listeners(game){
     //$(this).click(tile_uncover.bind(null, game, i));
   });
 }
-
+/*
+  Based off
+  Federal Pavol (October 10, 2020) Lights Out main.js function prepare_dom(s)
+*/
 function prepare_dom(game){
   const gameBoard = document.querySelector("#gameBoard");
   const nTiles = 14*18; //max size
@@ -346,6 +351,10 @@ function check_game_over_condition(game){
   }
 }
 
+/*
+  Based off
+  Federal Pavol (October 10, 2020) Lights Out main.js function render(s){}
+*/
 function render(game){
   let renderArray = game.getRendering();
   $("#gameBoard").css("grid-template-columns", `repeat(${game.getStatus().ncols}, 1fr)`);
