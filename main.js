@@ -301,6 +301,26 @@ function check_tile_content(tile, renderArray, row, col){
     tile.empty();
   }
 }
+function reveal_all_hidden_tiles(game){
+  let renderArray = game.getRendering();
+  
+  $("#gameBoard").children().each(function(){
+    if(Number($(this).attr("data-tileInd")) >= game.getStatus().ncols * game.getStatus().nrows){
+      $(this).css("display", "none");
+    }
+    else{
+      const col = Number($(this).attr("data-tileInd")) % game.getStatus().ncols;
+      const row = Math.floor(Number($(this).attr("data-tileInd"))/game.getStatus().ncols);
+      if(renderArray[row][col] === "H"){
+        game.uncover(row, col);
+        $(this).css("background-color", "Darkgray");
+        if(renderArray[row][col] !== '0' && renderArray[row][col] !== 'H'){
+          $(this).text(renderArray[row][col]);
+        }
+      }
+    }
+  });
+}
 
 function check_game_over_condition(game){
   let boom = game.getStatus().exploded;
@@ -311,9 +331,17 @@ function check_game_over_condition(game){
     intervalVar = null;
     if(boom){
       reveal_mines(game);
+      time = Number($("#time").attr("data-playTime"))
+      $("#gameOverCondition").text("Game Over You Hit a Mine!");
+      $("#timeTaken").text(`Your Game Lasted: ${time} Seconds`);
+      $("#overlay").css("display", "block");
     }
     else{
-      console.log("you win");
+      time = Number($("#time").attr("data-playTime"))
+      reveal_all_hidden_tiles(game);
+      $("#gameOverCondition").text("Congratulations You Win!");
+      $("#timeTaken").text(`Your Game Lasted: ${time} Seconds`);
+      $("#overlay").css("display", "block");
     }
   }
 }
@@ -371,6 +399,27 @@ function incrementSeconds(){
   $("#time").html(`${seconds}`);
 }
 
+function retry_button(game){
+  cols = game.getStatus().ncols;
+  rows = game.getStatus().nrows;
+  mines = game.getStatus().nmines;
+
+  game.init(rows, cols, mines);
+
+  $("#flags").html(`${game.getStatus().nmines}`);
+  $("#time").html("0");
+  $("#time").attr("data-playTime", 0);
+  if(intervalVar){
+    clearInterval(intervalVar);
+    intervalVar = null;
+  }
+
+  $("#overlay").css("display", "none");
+
+  render(game);
+  //console.log(`Cols: ${cols} Rows: ${rows} Mines: ${mines}`);
+}
+
 function main(){
 
   let game = new MSGame();
@@ -383,6 +432,8 @@ function main(){
     $(this).html(difficulty);
     $(this).click(menu_button_cb.bind(null, game, cols, rows, mines));
   });
+
+  $("#retryButton").click(retry_button.bind(null, game));
 
   prepare_dom(game);
 }

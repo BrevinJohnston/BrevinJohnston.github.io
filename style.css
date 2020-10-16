@@ -74,11 +74,30 @@ body{
     padding-bottom: 100%;
     display: block;
 }
-/*
+
 #overlay{
-    z-index: 9;
-    margin: auto;
     position: absolute;
+    opacity: 80%;
+    display: none;
+    width: 50%;
+    height: 50%;
+    top: 50%;
+    left: 50%;
+    z-index: 2;
+    background-color: rgb(80, 86, 92);
+    margin: auto;
     transform: translate(-50%, -50%);
 }
-*/
+
+#retryButton{
+    background-color: steelblue;
+    border-radius: 5px;
+    border-style: outset;
+    border-color: gray;
+    margin: auto;
+    width: 100px;
+    text-align: center;
+    font-size: 200%;
+    font-weight: bold;
+    cursor: pointer;
+}
