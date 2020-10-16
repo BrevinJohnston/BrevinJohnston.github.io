@@ -1,1 +1,1 @@
-[a link](https://brevinjohnston.github.io/minesweeper)
+[Minesweeper](https://brevinjohnston.github.io/minesweeper)
