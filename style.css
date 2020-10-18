@@ -129,6 +129,33 @@ body{
         font-weight: bold;
         color: cornsilk;
     }
+
+    #menuBar{
+        display: grid;
+        margin: auto;
+        /* the ending 3 frs are used for padding purposes*/
+        grid-template-columns: .5fr .5fr .5fr 1fr 1fr .5fr;
+        grid-template-rows: 50px;
+        background-color:darkgray;
+        padding: 5px;
+        width: calc(90vh)
+    }
+    
+    #menuBar > .menuButton{
+        background-color: gray;
+        text-align: center;
+        font-size: 20px;
+        padding: 5px;
+        border: solid darkgray;
+        cursor: pointer;
+    }
+
+    #menuBar > div{
+        background-color: darkgray;
+        text-align: center;
+        font-size: 20px;
+        padding: 5px;
+    }
 }
 
 @media only screen and (max-width: 400px) {
@@ -150,4 +177,6 @@ body{
         font-weight: bold;
         color: cornsilk;
     }
+
+    
 }

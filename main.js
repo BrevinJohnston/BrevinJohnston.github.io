@@ -205,7 +205,7 @@ function tile_mark(game, ind){
       game.mark(row, col);
     }
   }
-  $("#flags").html(`${game.getStatus().nmines - game.getStatus().nmarked}`);
+  $("#flags").html(`Flags: ${game.getStatus().nmines - game.getStatus().nmarked}`);
   render(game);
 }
 
@@ -267,7 +267,7 @@ function prepare_dom(game){
   }
   add_tile_listeners(game);
   $("h1").css("display", "none");
-  $("#flags").html(`${game.getStatus().nmines}`);
+  $("#flags").html(`Flags: ${game.getStatus().nmines}`);
   render(game);
   
 }
@@ -448,8 +448,8 @@ function menu_button_cb(game, ncols, nrows, nmines){
   game.init(nrows, ncols, nmines);
   $("#overlay").css("display", "none");
   reset_game(game);
-  $("#flags").html(`${game.getStatus().nmines}`);
-  $("#time").html("0");
+  $("#flags").html(`Flags: ${game.getStatus().nmines}`);
+  $("#time").html("Time: 0");
   $("#time").attr("data-playTime", 0);
   if(intervalVar){
     clearInterval(intervalVar);
@@ -461,7 +461,7 @@ function menu_button_cb(game, ncols, nrows, nmines){
 function incrementSeconds(){
   let seconds = Number($("#time").attr("data-playTime")) + 1;
   $("#time").attr("data-playTime", seconds);
-  $("#time").html(`${seconds}`);
+  $("#time").html(`Time: ${seconds}`);
 }
 
 function retry_button(game){
@@ -471,7 +471,7 @@ function retry_button(game){
 
   game.init(rows, cols, mines);
 
-  $("#flags").html(`${game.getStatus().nmines}`);
+  $("#flags").html(`Flags: ${game.getStatus().nmines}`);
   $("#time").html("0");
   $("#time").attr("data-playTime", 0);
   if(intervalVar){
