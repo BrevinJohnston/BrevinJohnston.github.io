@@ -472,7 +472,7 @@ function retry_button(game){
   game.init(rows, cols, mines);
 
   $("#flags").html(`Flags: ${game.getStatus().nmines}`);
-  $("#time").html("0");
+  $("#time").html("Time: 0");
   $("#time").attr("data-playTime", 0);
   if(intervalVar){
     clearInterval(intervalVar);
