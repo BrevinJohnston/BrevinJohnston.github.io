@@ -296,9 +296,42 @@ function check_tile_content(tile, renderArray, row, col){
   }
   else if(!isNaN(renderArray[row][col])){
     tile.css("background-color", "Darkgray");
-    if(renderArray[row][col] !== '0'){
-      tile.text(renderArray[row][col]);
+    if(renderArray[row][col] === '1'){
+      tile.css( "background-image", "url(bigNumbers/1.png)", "no-repeat");
+      tile.css( "background-size", "cover");
     }
+    else if(renderArray[row][col] === '2'){
+      tile.css( "background-image", "url(bigNumbers/2.png)", "no-repeat");
+      tile.css( "background-size", "cover");
+    }
+    else if(renderArray[row][col] === '3'){
+      tile.css( "background-image", "url(bigNumbers/3.png)", "no-repeat");
+      tile.css( "background-size", "cover");
+    }
+    else if(renderArray[row][col] === '4'){
+      tile.css( "background-image", "url(bigNumbers/4.png)", "no-repeat");
+      tile.css( "background-size", "cover");
+    }
+    else if(renderArray[row][col] === '5'){
+      tile.css( "background-image", "url(bigNumbers/5.png)", "no-repeat");
+      tile.css( "background-size", "cover");
+    }
+    else if(renderArray[row][col] === '6'){
+      tile.css( "background-image", "url(bigNumbers/6.png)", "no-repeat");
+      tile.css( "background-size", "cover");
+    }
+    else if(renderArray[row][col] === '7'){
+      tile.css( "background-image", "url(bigNumbers/7.png)", "no-repeat");
+      tile.css( "background-size", "cover");
+    }
+    else if(renderArray[row][col] === '8'){
+      tile.css( "background-image", "url(bigNumbers/8.png)", "no-repeat");
+      tile.css( "background-size", "cover");
+    }
+    
+    /*if(renderArray[row][col] !== '0'){
+      tile.text(renderArray[row][col]);
+    }*/
   }
   else if(renderArray[row][col] === "H"){
     tile.css("display", "block");
@@ -389,9 +422,28 @@ function render(game){
   }
 }
 
+
+function reset_game(game)
+{
+  let renderArray = game.getRendering();
+  $("#gameBoard").css("grid-template-columns", `repeat(${game.getStatus().ncols}, 1fr)`);
+  $("#gameBoard").css("grid-template-rows", `repeat(${game.getStatus().nrows}, 1fr)`);
+
+  $("#gameBoard").children().each(function(){
+    if(Number($(this).attr("data-tileInd")) >= game.getStatus().ncols * game.getStatus().nrows){
+      $(this).css("display", "none");
+    }
+    else{
+      $(this).css("display", "block");
+      $(this).css("background-image", "none");
+      $(this).css("background-color", "lightgray");
+    }
+  });
+}
 function menu_button_cb(game, ncols, nrows, nmines){
   game.init(nrows, ncols, nmines);
-  render(game);
+  $("#overlay").css("display", "none");
+  reset_game(game);
   $("#flags").html(`${game.getStatus().nmines}`);
   $("#time").html("0");
   $("#time").attr("data-playTime", 0);
@@ -425,7 +477,7 @@ function retry_button(game){
 
   $("#overlay").css("display", "none");
 
-  render(game);
+  reset_game(game);
   //console.log(`Cols: ${cols} Rows: ${rows} Mines: ${mines}`);
 }
 
