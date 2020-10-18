@@ -21,6 +21,7 @@ body{
 #gameWrapper{
     margin: auto;
     width: calc(90vh);
+    position: relative;
     /*width: 75vw;
     height: 80vh;
     background-color:blue;
@@ -106,4 +107,47 @@ body{
     font-size: 200%;
     font-weight: bold;
     color: cornsilk;
+}
+
+
+@media only screen and (max-width: 700px) {
+    #retryButton{
+        background-color: lightgray;
+        border-radius: 5px;
+        border-style: outset;
+        border-color: gray;
+        margin: auto;
+        width: 80px;
+        text-align: center;
+        font-size: 1em;
+        font-weight: bold;
+        cursor: pointer;
+    }
+    .overLayMessage{
+        text-align: center;
+        font-size: 1em;
+        font-weight: bold;
+        color: cornsilk;
+    }
+}
+
+@media only screen and (max-width: 400px) {
+    #retryButton{
+        background-color: lightgray;
+        border-radius: 5px;
+        border-style: outset;
+        border-color: gray;
+        margin: auto;
+        width: 75px;
+        text-align: center;
+        font-size: 1.5em;
+        font-weight: bold;
+        cursor: pointer;
+    }
+    .overLayMessage{
+        text-align: center;
+        font-size: 1.5em;
+        font-weight: bold;
+        color: cornsilk;
+    }
 }

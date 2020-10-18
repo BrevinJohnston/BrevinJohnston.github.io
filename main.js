@@ -283,7 +283,8 @@ function reveal_mines(game){
       const col = Number($(this).attr("data-tileInd")) % game.getStatus().ncols;
       const row = Math.floor(Number($(this).attr("data-tileInd"))/game.getStatus().ncols);
       if(renderArray[row][col] === "M"){
-        $(this).css("background-color", "blue");
+        $(this).css("background-image", "url(bigNumbers/mine.png)", "no-repeat");
+        $(this).css( "background-size", "cover");
       }
     }
   });
@@ -292,7 +293,9 @@ function reveal_mines(game){
 
 function check_tile_content(tile, renderArray, row, col){
   if(renderArray[row][col] === "F"){
-    tile.css("background-color", "red");
+    //tile.css("background-color", "red");
+    tile.css( "background-image", "url(bigNumbers/flag.png)", "no-repeat");
+    tile.css( "background-size", "cover");
   }
   else if(!isNaN(renderArray[row][col])){
     tile.css("background-color", "Darkgray");
@@ -336,6 +339,7 @@ function check_tile_content(tile, renderArray, row, col){
   else if(renderArray[row][col] === "H"){
     tile.css("display", "block");
     tile.css("background-color", "lightgray");
+    tile.css("background-image", "none");
     tile.empty();
   }
 }
